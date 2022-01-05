@@ -129,13 +129,19 @@ echo
 
 gun() {
 cat <<- conf > /data/data/com.termux/files/usr/etc/bash.bashrc
-PS1="\e[1;34m┌─(${nam1}@${nam2})─[\e[1;35m \e[4;31m\W \e[0m\e[1;34m] \e[0m\n\e[1;34m└▄︻デ══━一 $ \e[0;37m"
+PS1='\[\e[1;34m\]┌─(${nam1}@${nam2})─\[\e[1;35m[\e[4;31m\W\e[0m\e[1;35m]\e[0m\]\n\[\e[1;34m\]└▄︻デ══━一 $ \[\e[0;37m\]'
 conf
 }
 
 classic() {
 cat <<- conf >> /data/data/com.termux/files/usr/etc/bash.bashrc
-PS1="\e[1;34m┌─(${fname}@${lname})─[\e[1;35m \e[4;31m\W \e[0m\e[1;34m] \e[0m\n\e[1;34m└$ \e[0;37m"
+PS1='\[\e[1;34m\]┌─(${fname}@${lname})─\[\e[1;35m[\e[4;31m\W\e[0m\e[1;35m]\e[0m\]\n\[\e[1;34m\]└\$ \[\e[0;37m\]'
+conf
+}
+
+standard() {
+cat <<- conf >> /data/data/com.termux/files/usr/etc/bash.bashrc
+PS1='\[\e[1;34m\]┌─(${name1}@${name2})─>\[\n\e[1;34m├─[\e[1;31m\W\e[0m\e[1;34m]─[\e[0m\e[1;31m\T\e[0;m\e[1;34m]─> \e[0m\]\n\[\e[1;34m\]└─> $ \[\e[0;37m\]'
 conf
 }
 
@@ -147,7 +153,11 @@ ${C6}1) ${C4}┌─(NNC@Abijith)─[${C1}~${C4}]${R0}
    ${C4}└▄︻デ══━一 ${R0}
 
 ${C6}2) ${C4}┌─(NNC@Abijith)─[${C1}~${C4}]${R0}
-   ${C4}└\$${R0}" | pv -qL 100
+   ${C4}└\$${R0}
+
+${C6}3) ${C4}┌─(NNC@Abijith)─>${R0}
+   ${C4}├─[${C1}~${C4}]─[${C1}time${C4}]─>${R0}
+   ${C4}└─> \$${R0}" | pv -qL 300
 
 sleep 1
 echo
@@ -213,6 +223,45 @@ break
           [*] To see please reopen TERMUX, It will be seted
           [*] THANKS FOR USING...... :-)" | pv -qL 100 | lolcat
 
-break 
+break
+  elif [[ $choice == '3' || $choice == '03' ]]; then
+    echo
+     printf "${C4}[*]YOU SELECTED 3rd PS1[*] ${R0}"
+     echo
+     printf "${C6}ENTER YOUR NAME BEFORE @ ==> ${R0}"
+     read name1
+     echo
+     printf "${C6}ENTER YOUR NAME AFTER @ ==> ${R0}"
+     read name2
+     echo
+     printf "${C2}IT'S SETTING........... ${R0}\n"
+     sleep 3
+     echo
+     printf "${C6}[*]loding effects...... ${R0}\n"
+     sleep 2
+     echo
+     printf "${C6}[*]loding colours...... ${R0}\n"
+     sleep 2
+     echo
+     printf "${C6}[*]Installing...... ${R0}\n"
+     sleep 3
+     echo
+     standard
+     sleep 2
+     echo -e "
+          [*] All thing completed
+          [*] To see please reopen TERMUX, It will be seted
+          [*] THANKS FOR USING...... :-)" | pv -qL 100 | lolcat
+break
  fi
 done
+
+###################################################################
+
+              #▀█▀ █░█ ▄▀█ █▄░█ █▄▀   █▄█ █▀█ █░█
+              #░█░ █▀█ █▀█ █░▀█ █░█   ░█░ █▄█ █▄█
+
+               # █▀▀ █▀█ █▀█   █░█ █▀ █ █▄░█ █▀▀
+               # █▀░ █▄█ █▀▄   █▄█ ▄█ █ █░▀█ █▄█
+
+###################################################################
